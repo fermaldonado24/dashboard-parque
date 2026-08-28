@@ -2,20 +2,20 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Parque del Recuerdo · Dashboard de Medios Tradicionales — Aniversario 2026</title>
+<title>Parque del Recuerdo · Plan de Medios Aniversario 2026 — Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#1F3864; --navy-2:#2E4C8A; --gold:#B8860B;
+  --navy:#1F3864; --navy-2:#2E4C8A; --gold:#B8860B; --violet:#6C5CD6;
   --bg:#F3F5F8; --card:#FFFFFF; --border:#E4E8EE; --border-2:#D8DEE7;
   --text:#1F2430; --muted:#6B7280; --muted-2:#98A2B3;
-  --c-radio:#B8860B; --c-tv:#1F3864;
-  --c-sarandi:#2F7D6E; --c-delsol:#C1447E; --c-azul:#3E7CB1;
-  --c-canal10:#1F3864; --c-canal12:#C97A2B;
+  --c-sarandi:#B8860B; --c-delsol:#D8A94A; --c-azul:#E4C67C;
+  --c-canal10:#1F3864; --c-canal12:#3E7CB1;
   --s-nac:#1F3864; --s-mvd:#2E86AB;
+  --seg-ad:#2E7D5B; --seg-b:#6DB78F; --seg-c:#C99A3B; --seg-e:#C96A6A;
   --ok:#1F7A4C; --warn:#B8860B; --danger:#B23A3A; --info:#5E7096;
 }
 *{box-sizing:border-box;}
@@ -24,18 +24,24 @@ body{margin:0; background:var(--bg); color:var(--text); font-family:'Open Sans',
 .page{max-width:1240px; margin:0 auto; padding:26px 26px 60px;}
 .topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;}
 .brand{font-weight:800; color:var(--navy); font-size:14px; letter-spacing:.3px; text-transform:uppercase;}
-.topbar-right{display:flex; align-items:center; gap:12px;}
 .badge-preliminar{background:#FFF6E5; color:#8A6100; border:1px solid #F0D999; font-weight:700; font-size:11.5px; padding:5px 12px; border-radius:20px;}
 
-.campaign-header{margin-bottom:22px;}
+.campaign-header{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:16px;}
 .campaign-header h1{font-size:25px; font-weight:800; color:var(--navy); margin:0 0 4px;}
 .campaign-header .meta{color:var(--muted); font-size:13px; font-weight:600;}
+.inv-chip{text-align:right; background:#fff; border:1px solid var(--border); border-radius:12px; padding:10px 18px;}
+.inv-chip .l{font-size:10px; color:var(--muted); text-transform:uppercase;}
+.inv-chip .v{font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:800; color:var(--navy);}
+.inv-chip .s{font-size:11px; color:var(--muted-2);}
 
-.kpis{display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:20px;}
+.tgt-banner{display:flex; gap:12px; align-items:flex-start; background:#F2ECFB; border:1px solid #DACDF2; border-radius:12px; padding:12px 16px; margin-bottom:22px; font-size:12.5px; color:#4A3E7A;}
+.tgt-banner .ic{font-size:15px;}
+
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:12px; margin-bottom:20px;}
 .kpi{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px;}
 .kpi .label{font-size:10.5px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.3px; margin-bottom:8px;}
 .kpi .value{font-size:20px; font-weight:800; color:var(--navy);}
-.kpi .sub{font-size:11.5px; color:var(--muted-2); margin-top:4px;}
+.kpi .sub{font-size:11px; color:var(--muted-2); margin-top:4px;}
 
 .card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 20px; margin-bottom:18px;}
 .card h2{font-size:14.5px; font-weight:800; color:var(--navy); margin:0 0 3px;}
@@ -44,15 +50,16 @@ body{margin:0; background:var(--bg); color:var(--text); font-family:'Open Sans',
 
 .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
 .grid-2-uneven{display:grid; grid-template-columns:1fr 1.5fr; gap:16px;}
+.grid-invflight{display:grid; grid-template-columns:1fr 1.6fr; gap:16px;}
 
 .pill{display:inline-flex; align-items:center; gap:4px; font-size:10.5px; font-weight:800; padding:3px 9px; border-radius:20px; text-transform:uppercase; letter-spacing:.03em;}
 .pill.s-nac{background:#EAF0FA; color:var(--s-nac);}
 .pill.s-mvd{background:#E6F3F8; color:var(--s-mvd);}
 .pill.basis-real{background:#E7F6EE; color:var(--ok);}
-.pill.basis-piso{background:#FFF6E5; color:var(--warn);}
 .pill.basis-proxy{background:#FCEAEA; color:var(--danger);}
+.pill.role{background:#F0ECFB; color:var(--violet);}
 .pill.in-plan{background:#E7F6EE; color:var(--ok);}
-.pill.compl{background:#EEF1F5; color:var(--muted);}
+.pill.ibope{background:#EAF0FA; color:var(--navy);}
 
 table{width:100%; border-collapse:collapse; font-size:12.5px;}
 th{text-align:left; color:var(--muted); font-weight:800; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; padding:8px 10px; border-bottom:2px solid var(--border);}
@@ -62,7 +69,7 @@ td.num{text-align:right; font-weight:700; white-space:nowrap;}
 tr.clickable{cursor:pointer;}
 tr.clickable:hover{background:#F8F9FB;}
 
-.medio-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:16px;}
+.medio-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:16px;}
 .medio-card{text-align:left; cursor:pointer; background:#fff; border:1.5px solid var(--border-2); border-radius:12px; padding:15px 16px; transition:all .12s ease; width:100%; font-family:inherit;}
 .medio-card.active{border-color:var(--accent); background:var(--accent-tint);}
 .medio-card-top{display:flex; justify-content:space-between; align-items:flex-start;}
@@ -82,30 +89,40 @@ tr.clickable:hover{background:#F8F9FB;}
 .mini-stat{background:#F8F9FB; border:1px solid var(--border); border-radius:9px; padding:9px 11px;}
 .mini-stat .l{font-size:9.5px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.04em;}
 .mini-stat .v{font-size:14px; font-weight:800; color:var(--text); margin-top:2px;}
-.mini-stat .v.accent{color:var(--warn);}
+.mini-stat .v.accent{color:var(--violet);}
 
 .note-box{display:flex; gap:10px; align-items:flex-start; background:#F8F9FB; border:1px solid var(--border); border-radius:10px; padding:10px 14px; margin-bottom:16px; font-size:12px; color:var(--muted);}
-
 .detail-panel{border:1.5px solid var(--accent); border-radius:14px; padding:22px; margin-bottom:18px; background:#FDFDFE;}
-.station-selector{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
-.station-btn{display:flex; align-items:center; gap:7px; cursor:pointer; padding:7px 13px; border-radius:20px; font-size:12px; font-weight:700; background:#fff; border:1.5px solid var(--border-2); color:var(--muted); font-family:inherit;}
-.station-btn.active{color:#fff;}
-.station-dot{width:8px; height:8px; border-radius:50%;}
-
-.notes-list{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px;}
-.notes-list li{font-size:12px; color:var(--muted); line-height:1.55;}
 .notes-title{display:flex; align-items:center; gap:6px; margin-bottom:8px; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted-2); font-weight:800;}
+.why-text{font-size:12.5px; color:#4A5568; line-height:1.6; margin:0;}
+.why-star{font-size:12.5px; color:var(--violet); font-weight:700; margin:8px 0 0;}
 
-.audience-item{display:flex; justify-content:space-between; gap:10px; padding:8px 12px; background:#F8F9FB; border-radius:8px; border:1px solid var(--border); margin-bottom:6px;}
-.audience-item .l{font-size:11.5px; color:var(--muted);}
-.audience-item .v{font-size:12.5px; color:var(--text); font-weight:800; text-align:right;}
+/* program blocks (TV) */
+.prog-wrap{display:flex; flex-wrap:wrap; gap:14px; margin-top:10px;}
+.prog-block{background:#F8F9FB; border:1px solid var(--border); border-radius:12px; padding:15px; flex:1 1 300px; min-width:280px;}
+.prog-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;}
+.prog-head .n{font-size:13.5px; font-weight:800; color:var(--text);}
+.prog-head .s{font-size:11px; font-weight:800;}
+.bar-stack{display:flex; height:18px; border-radius:5px; overflow:hidden; font-size:9.5px; font-weight:800; color:#fff;}
+.bar-stack.thin{height:12px;}
+.bar-stack > div{display:flex; align-items:center; justify-content:center; min-width:0;}
+.readings .r{display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-bottom:3px;}
+.subtle-label{font-size:9.5px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.04em; margin:10px 0 5px;}
 
-.callout{display:flex; gap:10px; align-items:flex-start; background:#FDF3F0; border:1px solid #F0C9BB; border-radius:10px; padding:12px 14px; margin-bottom:16px; font-size:12.5px; color:#7A4022;}
-.callout.info{background:#EAF0FA; border-color:#C7D6EE; color:#26406E;}
-
-.legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; font-size:12px;}
-.legend .item{display:flex; align-items:center; gap:5px; cursor:default;}
-.legend .dot{width:9px; height:9px; border-radius:2px; display:inline-block;}
+/* segment cross */
+.seg-row{margin-bottom:12px;}
+.seg-head{display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;}
+.seg-legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; font-size:10.5px; color:var(--muted);}
+.seg-legend .k{display:flex; align-items:center; gap:5px;}
+.seg-legend .sw{width:9px; height:9px; border-radius:2px; display:inline-block;}
+.info-boxes{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:18px 0;}
+.info-box{border-radius:12px; padding:16px 18px;}
+.info-box.green{background:#EAF6EF; border:1px solid #BFE3CC;}
+.info-box.violet{background:#F2ECFB; border:1px solid #DACDF2;}
+.info-box h4{margin:0 0 8px; font-size:11px; text-transform:uppercase; letter-spacing:.05em; font-weight:800;}
+.info-box.green h4{color:var(--ok);} .info-box.violet h4{color:var(--violet);}
+.info-box ul{margin:0; padding-left:18px; font-size:12px; line-height:1.6; color:#3F4756;}
+.info-box li{margin-bottom:5px;}
 
 /* flighting calendar */
 .fl-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:10px;}
@@ -123,12 +140,14 @@ tr.clickable:hover{background:#F8F9FB;}
 .fl-legend .k{display:flex; align-items:center; gap:6px;}
 .fl-legend .sw{width:12px; height:12px; border-radius:3px; display:inline-block;}
 
+.legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; font-size:12px;}
+.legend .item{display:flex; align-items:center; gap:5px; cursor:pointer;}
+.legend .dot{width:9px; height:9px; border-radius:2px; display:inline-block;}
+
 footer.doc-footer{text-align:center; color:var(--muted-2); font-size:11px; margin-top:22px;}
 
 @media (max-width:980px){
-  .kpis{grid-template-columns:repeat(2,1fr);}
-  .grid-2, .grid-2-uneven{grid-template-columns:1fr;}
-  .medio-cards{grid-template-columns:1fr;}
+  .grid-2, .grid-2-uneven, .grid-invflight, .info-boxes{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -137,104 +156,140 @@ footer.doc-footer{text-align:center; color:var(--muted-2); font-size:11px; margi
 
   <div class="topbar">
     <div class="brand">Dashboard de medios tradicionales</div>
-    <div class="topbar-right">
-      <div class="badge-preliminar">Versión preliminar de trabajo</div>
-    </div>
+    <div class="badge-preliminar">Versión preliminar de trabajo</div>
   </div>
 
   <div class="campaign-header">
-    <h1>Parque del Recuerdo — Campaña Aniversario 33 años</h1>
-    <div class="meta">Radio · TV (Canal 10 + Canal 12) &nbsp;|&nbsp; Setiembre – Octubre 2026 &nbsp;|&nbsp; Target: ABC1 · +45 años / senior</div>
+    <div>
+      <h1>Parque del Recuerdo — 33º Aniversario</h1>
+      <div class="meta">Radio · TV &nbsp;|&nbsp; Setiembre – Octubre 2026</div>
+    </div>
+    <div class="inv-chip">
+      <div class="l">Inversión total</div>
+      <div class="v mono">$1.403.120</div>
+      <div class="s">USD 35.078 + IVA</div>
+    </div>
   </div>
 
-  <div class="kpis">
-    <div class="kpi"><div class="label">Inversión total</div><div class="value mono">$1.403.120</div><div class="sub">USD 35.078 + IVA · sin producción</div></div>
-    <div class="kpi"><div class="label">Salidas (radio + TV)</div><div class="value mono">624</div><div class="sub">radio 264 · TV 360 · sin PNT</div></div>
-    <div class="kpi"><div class="label">Tiempo en aire</div><div class="value mono" id="kpiTiempoAire">—</div><div class="sub">radio + TV, suma de segundos</div></div>
-    <div class="kpi"><div class="label">Pico ABC1 mañana</div><div class="value mono">6,28 pts</div><div class="sub">Del Sol FM · franja 07–12h (Factum)</div></div>
-    <div class="kpi"><div class="label">Medios / soportes</div><div class="value mono">2 / 5</div><div class="sub">3 emisoras + 2 canales</div></div>
+  <div class="tgt-banner">
+    <span class="ic">◎</span>
+    <div><b>Target de campaña:</b> personas +45 años, con foco en el segmento senior (60+) · nivel socioeconómico ABC1 (medio-alto y alto). Radio: Factum, Medición General de Audiencia de Radios (Ago–Oct 2025, área metropolitana). TV: Kantar Ibope Media.</div>
   </div>
+
+  <div class="kpis" id="kpis"></div>
 
   <div class="card">
-    <h2>Presión sobre target — GRP ABC1 (franja mañana 07–12h)</h2>
-    <div class="card-sub">No se suman entre medios: cada uno usa un panel y una geografía distinta. Se muestran por separado, con el nivel de confianza del dato.</div>
+    <h2>Presión sobre target — GRP por medio</h2>
+    <div class="card-sub">No se suman entre medios: cada uno usa un panel distinto. Radio = rating ABC1 de la franja mañana (07–12h) × salidas (Factum). TV = rating por programa (Kantar Ibope).</div>
     <div class="mini-stats" id="grpStrip"></div>
-    <div class="callout"><span>⚠</span><span><b>Importante:</b> el plan compra a las tres radios en la <b>franja mañana (07–12h)</b>, donde se concentra la audiencia <b>ABC1 +45</b>. Por eso el GRP de radio se calcula sobre el <b>rating ABC1 de esa franja</b> (Factum 2025, área metropolitana), no sobre el rating general. Canal 10 y Canal 12 son estimaciones <b>proxy</b> (laterales en noticieros): no hay rating real por inserción y no son comparables 1 a 1 con la radio. Canal 10 y Canal 12 no compiten entre sí — al ser canales distintos, coincidir el mismo día <b>suma frecuencia</b>.</span></div>
-    <div class="note-box"><span>ⓘ</span><span>Radio: rating ABC1 de la franja mañana (07:00–11:59) × salidas de spot, según el Cuadro comparativo de performance de Factum 2025 (área metropolitana). TV: proxy con rating de referencia conservador — Canal 10 elegido por NSE (ABC1), Canal 12 por rating/volumen.</span></div>
+    <div class="note-box"><span>ⓘ</span><span>Radio: rating ABC1 de la franja mañana × salidas — estimado con base en rating real, medido en zona metropolitana. TV: <b>Canal 10</b> es proxy por programa (no hay rating por cada inserción lateral); <b>Canal 12</b> tiene rating real por programa (Desayunos Informales, Telemundo mediodía).</span></div>
   </div>
 
   <div class="card">
     <h2>Cobertura geográfica — inversión por alcance</h2>
-    <div class="card-sub">Nacional (Sarandí + Azul FM + Canal 10 + Canal 12) vs. Montevideo (Del Sol FM)</div>
+    <div class="card-sub">Nacional (Sarandí + Azul + Canal 10 + Canal 12) vs. Montevideo (Del Sol FM)</div>
     <div class="grid-2-uneven">
-      <div style="position:relative; height:180px;">
-        <canvas id="chartGeo" role="img" aria-label="Barras horizontales: inversión por alcance geográfico"></canvas>
-      </div>
+      <div style="position:relative; height:170px;"><canvas id="chartGeo"></canvas></div>
       <div id="geoList" style="display:flex; flex-direction:column; gap:8px; justify-content:center;"></div>
     </div>
   </div>
 
-  <div class="grid-2">
+  <div class="grid-invflight">
     <div class="card">
       <h2>Inversión por medio</h2>
       <div class="card-sub">Distribución del presupuesto contratado</div>
-      <div style="position:relative; height:210px;">
-        <canvas id="chartMedio" role="img" aria-label="Torta: inversión por medio"></canvas>
-      </div>
+      <div style="position:relative; height:210px;"><canvas id="chartMedio"></canvas></div>
       <div class="legend" id="legendMedio"></div>
     </div>
     <div class="card">
       <h2>Flighting semanal — salidas de spot</h2>
       <div class="card-sub">Radio (3 emisoras) y TV (2 canales), semana a semana</div>
-      <div style="position:relative; height:210px;">
-        <canvas id="chartFlight" role="img" aria-label="Líneas: salidas de spot por semana, radio y TV"></canvas>
-      </div>
+      <div style="position:relative; height:210px;"><canvas id="chartFlight"></canvas></div>
     </div>
   </div>
 
   <div class="card">
     <h2>Eficiencia — costo por punto de GRP</h2>
-    <div class="card-sub">Cuánto cuesta comprar un punto de presión sobre el target. Comparar solo dentro del mismo medio — TV usa una base proxy, no es comparable 1 a 1 con radio.</div>
-    <div style="position:relative; height:250px;">
-      <canvas id="chartEfficiency" role="img" aria-label="Barras horizontales: costo por punto de GRP por soporte"></canvas>
-    </div>
+    <div class="card-sub">Comparar solo dentro del mismo medio. TV usa rating de programa (Ibope); Canal 10 es proxy.</div>
+    <div style="position:relative; height:230px;"><canvas id="chartEfficiency"></canvas></div>
   </div>
 
   <div class="card">
-    <h2>Medios de la campaña</h2>
-    <div class="card-sub">Hacé click para ver el detalle completo de cada uno</div>
+    <h2>Medios contratados</h2>
+    <div class="card-sub">Hacé click para ver el detalle de cada emisora y canal</div>
     <div class="medio-cards" id="medioCards"></div>
     <div id="detailArea"></div>
   </div>
 
   <div class="card">
     <h2>Calendario de flighting — día a día</h2>
-    <div class="card-sub">Salidas de spot por día hábil (44 días · set–oct 2026). Intensidad de color según la carga de cada línea. Radio 2/día constante; Canal 10 y Canal 12 varían por semana.</div>
+    <div class="card-sub">Salidas de spot por día hábil (44 días · set–oct 2026). Intensidad de color según la carga de cada línea.</div>
     <div class="fl-wrap"><table class="fl-cal" id="flCal"></table></div>
     <div class="fl-legend" id="flLegend"></div>
-    <div class="note-box" style="margin-top:12px; margin-bottom:0;"><span>ⓘ</span><span><b>Reparto por programa:</b> Canal 10 se divide en Subrayado mediodía (152) + Arriba Gente (88); Canal 12 en Desayunos Informales 2A (44) + Telemundo mediodía (76). El reparto dentro de cada canal responde al NSE (Canal 10) y al rating (Canal 12). No hay superposición real entre Canal 10 y Canal 12 — coincidir el mismo día suma frecuencia en vez de competir.</span></div>
+    <div class="note-box" style="margin-top:12px; margin-bottom:0;"><span>ⓘ</span><span><b>Reparto por programa:</b> Canal 10 = Subrayado mediodía (147) + Arriba Gente (93); Canal 12 = Desayunos Informales 2A (59) + Telemundo mediodía (61). Canal 10 y Canal 12 no compiten — al ser canales distintos, coincidir el mismo día suma frecuencia.</span></div>
   </div>
 
   <div class="card">
-    <h2>Resumen de costos — detalle por línea</h2>
+    <h2>Cruce con la segmentación de clientes de Parque del Recuerdo</h2>
+    <div class="card-sub">Basado en el análisis propio de la cartera del cliente (11.241 contratos, ~10.308 clientes, compras 2020–2026) que cruza edad de compra, mora y uso de la parcela.</div>
+    <div style="overflow-x:auto; margin-bottom:16px;"><table id="segTable"></table></div>
+
+    <div class="label-eyebrow">A qué segmento de cliente le llega cada radio (ponderado por GRP)</div>
+    <div style="font-size:11px; color:var(--muted-2); margin-bottom:14px;">Composición etaria de audiencia (Factum) aplicada sobre el GRP de cada emisora — no es la audiencia total, es hacia dónde se reparte el peso de la pauta.</div>
+    <div id="segBars"></div>
+    <div class="seg-legend">
+      <span class="k"><span class="sw" style="background:var(--seg-ad);"></span>60+ = segmentos A+D (ningún panel separa 60-69 de 70+)</span>
+      <span class="k"><span class="sw" style="background:var(--seg-b);"></span>50-59 = segmento B</span>
+      <span class="k"><span class="sw" style="background:var(--seg-c);"></span>40-49 = segmento C</span>
+      <span class="k"><span class="sw" style="background:var(--seg-e);"></span>&lt;40 = segmento E</span>
+    </div>
+
+    <div class="info-boxes">
+      <div class="info-box green">
+        <h4>Dónde el plan de medios apoya el análisis</h4>
+        <ul>
+          <li>Sarandí (ancla del plan) concentra 68% de su peso en 50-69 (A+B) — el núcleo exacto que la base del cliente marca como prioridad máxima.</li>
+          <li>Canal 10 y Canal 12 sobre-indexan en 50+/60+ en los seis programas, sin excepción.</li>
+          <li>El tono elegido para toda la campaña (previsión, autonomía, tranquilidad — no urgencia) es el mismo que recomienda el propio análisis del cliente.</li>
+        </ul>
+      </div>
+      <div class="info-box violet">
+        <h4>Dónde el plan digital suma precisión</h4>
+        <ul>
+          <li>Del Sol aporta el mayor volumen y alcance del plan (el rating más alto de las tres radios) — llega a audiencias más amplias donde el digital puede targetear con precisión y priorizar 60-69 y 50-59.</li>
+          <li>Radio y TV construyen escala y marca; el digital agrega la puntería fina por edad exacta, con mensajes específicos por segmento.</li>
+          <li>Ningún panel de audiencia separa 60-69 de 70+ — el digital sí permite esa distinción exacta.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-box" style="margin-bottom:0;"><span>ⓘ</span><span><b>Conclusión:</b> el plan de medios apoya el análisis del cliente — está construido sobre el público ABC1 50+/60+ con el tono correcto, y cumple el rol de instalar marca y mensaje a escala para el aniversario. Sarandí, Canal 10 y Canal 12 concentran su peso en el núcleo 60-69/50-59; Del Sol suma el mayor volumen y alcance, llegando a audiencias más amplias que el plan digital complementario puede capturar con precisión. Juntos, medios tradicionales y digital cubren la escala y la puntería fina que pide la estrategia del cliente.</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Ranking comparativo — rating ABC1 (L-V)</h2>
+    <div class="card-sub">Las 3 emisoras contratadas vs. las 4 evaluadas como respaldo (no contratadas)</div>
+    <div style="position:relative; height:250px;"><canvas id="chartRanking"></canvas></div>
+    <div class="legend" style="margin-top:12px;">
+      <span class="item" style="cursor:default;"><span class="dot" style="background:var(--ok);"></span>Contratada en este plan</span>
+      <span class="item" style="cursor:default;"><span class="dot" style="background:var(--muted-2);"></span>Evaluada, no contratada</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Radios evaluadas como respaldo (no contratadas)</h2>
+    <div class="card-sub">Contexto de la decisión de medios — no forman parte de la inversión</div>
+    <div style="overflow-x:auto;"><table id="backupTable"></table></div>
+  </div>
+
+  <div class="card">
+    <h2>Resumen de costos</h2>
     <div class="card-sub">Click en una fila para ir al detalle</div>
-    <div style="overflow-x:auto;">
-      <table id="summaryTable"></table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Cuadro comparativo de performance — Factum 2025</h2>
-    <div class="card-sub">Rating por segmento (lunes a viernes, área metropolitana) y rol recomendado. Las emisoras <span class="pill in-plan">En el plan</span> son las contratadas; el resto es plan complementario evaluado.</div>
-    <div style="overflow-x:auto;">
-      <table id="compTable"></table>
-    </div>
-    <div class="note-box" style="margin-top:14px; margin-bottom:0;"><span>ⓘ</span><span><b>Lógica del plan:</b> núcleo ABC1 +45 con Sarandí (ancla de sobriedad e institucionalidad, líder en +60 con alto poder adquisitivo), Del Sol (volumen ABC1, decisores 45–55 que definen la previsión familiar) y Azul (equilibrio en todo el target +45). En TV, Canal 10 aporta el perfil NSE/ABC1 y Canal 12 suma rating/volumen — juntos amplían la frecuencia sobre el target.</span></div>
+    <div style="overflow-x:auto;"><table id="summaryTable"></table></div>
   </div>
 
   <div class="note-box" style="align-items:flex-start;">
     <span>ⓘ</span>
-    <span><b>Notas de fuente —</b> costos, salidas de spot y segundos: primera pestaña del Excel del plan (Campaña Plan Aniversario — Radio · TV, set/oct 2026). Calendario día a día: pestaña "Calendario de flighting" del mismo Excel. Rating por segmento (Total L-V, ABC1, ABC1 mañana 07–12h, 50–59 y ≥60 años): Cuadro comparativo de performance de Factum 2025, área metropolitana. GRP de radio = rating ABC1 de la franja mañana × salidas de spot (las tres emisoras corren en 07–12h). TV: estimado proxy — Canal 10 (120 min de laterales en Subrayado mediodía + Arriba Gente, ~163"/día hábil) y Canal 12 (60 min de laterales en Desayunos Informales + Telemundo mediodía); no hay rating real por inserción. Cobertura geográfica: alcance declarado de cada emisora/canal. Las semanas "Set 5 / Oct 1" están unificadas en una sola columna porque corresponden a la misma semana calendario.</span>
+    <span><b>Notas de fuente —</b> costos, salidas y segundos: plan de medios definitivo (Excel, hoja "Plan de medios Parque del Recuerdo", v3). Ratings de radio (total L-V, ABC1 L-V, mañana ABC1 07–12h y por franja etaria): Factum, Medición General de Audiencia de Radios (Ago–Oct 2025, área metropolitana), hoja "Comparación". GRP de radio = rating de la franja mañana ABC1 × salidas totales — estimado con base en rating real, medido en zona metropolitana. Los GRP de TV (marcados con *) usan rating de Kantar Ibope: en <b>Canal 10</b> es proxy por programa (no hay rating por cada inserción lateral); en <b>Canal 12</b> hay rating real por programa (Desayunos tuvo 2 lecturas — 3,05 y 1,91 — promediadas por prudencia). Las 4 radios "evaluadas como respaldo" no están contratadas; se incluyen como contexto. La composición etaria de cada emisora (cruce con segmentación) se estimó ponderando el rating por segmento de Factum con el peso poblacional de cada tramo — estimación propia, no un dato publicado por Factum.</span>
   </div>
 
   <footer class="doc-footer">Versión preliminar de trabajo — validar cifras antes de compartir con el cliente</footer>
@@ -245,477 +300,300 @@ footer.doc-footer{text-align:center; color:var(--muted-2); font-size:11px; margi
 const fmt = (n) => n==null ? '—' : '$'+Math.round(n).toLocaleString('es-UY');
 const fmtUsd = (n) => n==null ? '—' : 'USD '+n.toLocaleString('es-UY',{minimumFractionDigits:0,maximumFractionDigits:0});
 const fmtNum = (n) => n==null ? '—' : Math.round(n).toLocaleString('es-UY');
+const nf = (n) => (n==null?'—':n.toLocaleString('es-UY'));
 function secToHuman(sec){ const h=Math.floor(sec/3600); const m=Math.round((sec%3600)/60); return h+'h '+m+'m'; }
 function hexA(hex,a){ const h=hex.replace('#',''); const r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16); return `rgba(${r},${g},${b},${a})`; }
 
-const SCOPES = {
-  nacional:{label:'Nacional', color:'#1F3864', cls:'s-nac'},
-  montevideo:{label:'Montevideo', color:'#2E86AB', cls:'s-mvd'},
-};
-function scopePill(scope){
-  const s = SCOPES[scope]; if(!s) return '';
-  return `<span class="pill ${s.cls}">${s.label}</span>`;
-}
-function basisPill(basis){
-  const map = { real:['Real','basis-real'], piso:['Piso conservador','basis-piso'], proxy:['Proxy','basis-proxy'] };
-  const [label, cls] = map[basis] || ['—','basis-piso'];
-  return `<span class="pill ${cls}">${label}</span>`;
-}
+const SCOPES = { nacional:{label:'Nacional', color:'#1F3864', cls:'s-nac'}, montevideo:{label:'Montevideo', color:'#2E86AB', cls:'s-mvd'} };
+function scopePill(s){ const x=SCOPES[s]; return x?`<span class="pill ${x.cls}">${x.label}</span>`:''; }
+function basisPill(b){ const m={real:['Real','basis-real'],proxy:['Proxy','basis-proxy']}; const[l,c]=m[b]||['—','basis-real']; return `<span class="pill ${c}">${l}</span>`; }
 
-// ---------- DATA (verificada contra Excel / cuadro Factum 2025) ----------
 const WEEKS9 = ['Set 1','Set 2','Set 3','Set 4','Set 5 / Oct 1','Oct 2','Oct 3','Oct 4','Oct 5'];
 
-const RADIO_STATIONS = [
-  { id:'sarandi', name:'Sarandí 690 AM', sub:'Alcance nacional', scope:'nacional', color:'var(--c-sarandi)', hex:'#2F7D6E',
-    costUyu:198000, costUsd:4950, weekly:[8,10,10,10,10,10,10,10,10], pnts:0, secPerSpot:30,
-    grp:414, grpBasis:'real',
-    grpNote:'Rating ABC1 franja mañana (07–12h) = 4,70 × 88 salidas ≈ 414 GRP sobre target. Es la AM con mayor audiencia ABC1 del mercado y líder en adultos mayores (60+: 1,79) con alto poder adquisitivo — aporta la sobriedad e institucionalidad que pide la comunicación de un 33º aniversario.',
-    notes:[
-      '2 salidas diarias de lunes a viernes: 1 en Informativo Sarandí (7–9h) y 1 en Las Cosas en su Sitio (9–12h).',
-      'Rol en el plan: ancla principal — sobriedad, reputación e institucionalidad para el público ABC1 +50.',
-    ],
-    audience:{ items:[
-      {label:'Rating ABC1 mañana (07–12h)', value:'4,70'},
-      {label:'Rating ABC1 (L-V)', value:'1,55'},
-      {label:'Rating total (L-V)', value:'0,84'},
-      {label:'Rating 50–59 / ≥60 años', value:'0,90 / 1,79'},
-      {label:'Rol recomendado', value:'Ancla principal (ABC1 + 50+)'},
-    ], source:'Factum 2025 — Cuadro comparativo de performance (rating por segmento, L-V, área metropolitana).'},
-  },
-  { id:'delsol', name:'Del Sol 99.5 FM', sub:'Alcance Montevideo', scope:'montevideo', color:'var(--c-delsol)', hex:'#C1447E',
-    costUyu:179520, costUsd:4488, weekly:[8,10,10,10,10,10,10,10,10], pnts:0, secPerSpot:30,
-    grp:553, grpBasis:'real',
-    grpNote:'Rating ABC1 franja mañana (07–12h) = 6,28 × 88 salidas ≈ 553 GRP sobre target. Líder absoluta del mercado de radio en Uruguay: el mayor volumen de profesionales y decisores. Atrapa al segmento 45–55 que define la previsión familiar o contrata servicios para sus padres.',
-    notes:[
-      '2 salidas diarias de lunes a viernes en No Toquen Nada (8–12h), pieza de 30".',
-      'Rol en el plan: volumen ABC1 — decisores de compra 45–55 años.',
-    ],
-    audience:{ items:[
-      {label:'Rating ABC1 mañana (07–12h)', value:'6,28'},
-      {label:'Rating ABC1 (L-V)', value:'2,16'},
-      {label:'Rating total (L-V)', value:'1,50'},
-      {label:'Rating 50–59 / ≥60 años', value:'1,29 / 0,93'},
-      {label:'Rol recomendado', value:'Volumen ABC1 (decisores 45–55)'},
-    ], source:'Factum 2025 — Cuadro comparativo de performance (rating por segmento, L-V, área metropolitana).'},
-  },
-  { id:'azul', name:'Azul FM 101.9', sub:'Alcance nacional', scope:'nacional', color:'var(--c-azul)', hex:'#3E7CB1',
-    costUyu:105600, costUsd:2640, weekly:[8,10,10,10,10,10,10,10,10], pnts:0, secPerSpot:30,
-    grp:303, grpBasis:'real',
-    grpNote:'Rating ABC1 franja mañana (07–12h) = 3,44 × 88 salidas ≈ 303 GRP sobre target. 3.ª radio con mayor rating ABC1 del país; sorprende por su equilibrio en todo el target +45 (50–59: 1,40 · 60+: 1,23). Da la mayor constancia de escucha en el público adulto contemporáneo de nivel alto.',
-    notes:[
-      '2 salidas diarias de lunes a viernes: 1 en Mapa del Día (7–9h) y 1 en La Pecera (9–12h).',
-      'Rol en el plan: alcance equilibrado en todo el target +45.',
-    ],
-    audience:{ items:[
-      {label:'Rating ABC1 mañana (07–12h)', value:'3,44'},
-      {label:'Rating ABC1 (L-V)', value:'1,52'},
-      {label:'Rating total (L-V)', value:'1,24'},
-      {label:'Rating 50–59 / ≥60 años', value:'1,40 / 1,23'},
-      {label:'Rol recomendado', value:'Alcance equilibrado +45'},
-    ], source:'Factum 2025 — Cuadro comparativo de performance (rating por segmento, L-V, área metropolitana).'},
-  },
+// ---------- RADIO ----------
+const STATIONS = [
+  { id:'sarandi', name:'Sarandí 690 AM', scope:'nacional', hex:'#B8860B',
+    programs:'Informativo Sarandí (7-9h) + Las Cosas en su Sitio (9-12h)',
+    detail:'1 salida en Informativo Sarandí (7-9h) y 1 en Las Cosas en su Sitio (9-12h), de lunes a viernes.',
+    costUyu:198000, costUsd:4950, weekly:[8,10,10,10,10,10,10,10,10], salidas:88, seconds:2640,
+    role:'Ancla principal (sobriedad + ABC1 + 50+)',
+    rating:{ total:0.84, abc1:1.55, manana:4.70, r5059:0.90, r60:1.79 },
+    why:'Ocupa el primer lugar en sintonía de adultos mayores con alto poder adquisitivo. Aporta la sobriedad, reputación e institucionalidad que requiere la comunicación de un 33º aniversario.',
+    highlight:'La AM con mayor audiencia ABC1 del mercado.',
+    composition:{ f:56, m:44, e1829:5, e3039:11, e4049:16, e5059:18, e60:50, abc1:64 } },
+  { id:'delsol', name:'Del Sol 99.5 FM', scope:'montevideo', hex:'#D8A94A',
+    programs:'No Toquen Nada (8-12h)',
+    detail:'2 salidas de lunes a viernes en No Toquen Nada (8-12h), spot de 30".',
+    costUyu:179520, costUsd:4488, weekly:[8,10,10,10,10,10,10,10,10], salidas:88, seconds:2640,
+    role:'Volumen ABC1 (decisores 45-55)',
+    rating:{ total:1.50, abc1:2.16, manana:6.28, r5059:1.29, r60:0.93 },
+    why:'El mayor rating ABC1 y el pico de franja mañana más alto de las tres emisoras — aporta el mayor volumen bruto de presión sobre el target ABC1+45.',
+    highlight:'El rating mañana ABC1 más alto de las tres radios contratadas.',
+    composition:{ f:31, m:69, e1829:10, e3039:30, e4049:32, e5059:15, e60:13, abc1:58 } },
+  { id:'azul', name:'Azul FM 101.9', scope:'nacional', hex:'#E4C67C',
+    programs:'Mapa del Día (7-9h) + La Pecera (9-12h)',
+    detail:'1 salida en Mapa del Día (7-9h) y 1 en La Pecera (9-12h), de lunes a viernes.',
+    costUyu:105600, costUsd:2640, weekly:[8,10,10,10,10,10,10,10,10], salidas:88, seconds:2640,
+    role:'Alcance equilibrado en todo el target +45',
+    rating:{ total:1.24, abc1:1.52, manana:3.44, r4049:1.34, r5059:1.40, r60:1.23 },
+    why:'Da la mayor constancia de escucha en el público adulto contemporáneo de nivel alto: es la única de las tres con rating parejo en 40-49, 50-59 y +60 simultáneamente.',
+    highlight:'3.ª radio con mayor rating ABC1 del país.',
+    composition:{ f:43, m:57, e1829:13, e3039:25, e4049:22, e5059:19, e60:21, abc1:53 } },
 ];
-const RADIO_TOTAL = {
-  costUyu: RADIO_STATIONS.reduce((a,s)=>a+s.costUyu,0),
-  costUsd: RADIO_STATIONS.reduce((a,s)=>a+s.costUsd,0),
-  spots: RADIO_STATIONS.reduce((a,s)=>a+s.weekly.reduce((x,y)=>x+y,0),0),
-  grp: RADIO_STATIONS.reduce((a,s)=>a+s.grp,0),
-  sec: RADIO_STATIONS.reduce((a,s)=>a+s.weekly.reduce((x,y)=>x+y,0)*s.secPerSpot,0),
-};
+STATIONS.forEach(s=>{ s.grp = Math.round(s.rating.manana * s.salidas); });
 
+// ---------- TV ----------
 const TV_CHANNELS = [
-  { id:'canal10', name:'Canal 10', sub:'Laterales — Subrayado mediodía + Arriba Gente', scope:'nacional', color:'var(--c-canal10)', hex:'#1F3864',
-    costUyu:600000, costUsd:15000, weekly:[24,30,30,30,26,25,25,25,25], pnts:0, secPerSpot:30,
-    grp:1080, grpBasis:'proxy',
-    grpNote:'Estimado proxy: 240 apariciones (laterales) × rating de referencia conservador ~4,5 de Subrayado mediodía. La edición mediodía rinde por debajo de la central (7,3–8,7) y no hay dato real por inserción. Elegido por su perfil de NSE / ABC1.',
-    notes:[
-      '120 minutos de laterales/zócalos, ~163" por día hábil (44 días hábiles), contrato 2 meses set–oct.',
-      'Reparto: Subrayado mediodía (152 salidas) + Arriba Gente (88). Criterio de reparto: NSE (perfil ABC1).',
-    ],
-    audience:{ items:[
-      {label:'Formato', value:'Laterales / zócalos'},
-      {label:'Programas', value:'Subrayado mediodía + Arriba Gente'},
-      {label:'Salidas (Subrayado / Arriba)', value:'152 / 88'},
-      {label:'Criterio de selección', value:'NSE (ABC1)'},
-      {label:'Subrayado central — referencia', value:'7,3 – 8,7'},
-    ], source:'Plan de medios (primera pestaña del Excel) + panel de rating de Canal 10 (referencia).'},
-  },
-  { id:'canal12', name:'Canal 12', sub:'Laterales — Desayunos Informales + Telemundo mediodía', scope:'nacional', color:'var(--c-canal12)', hex:'#C97A2B',
-    costUyu:320000, costUsd:8000, weekly:[11,14,14,14,13,14,14,13,13], pnts:0, secPerSpot:30,
-    grp:480, grpBasis:'proxy',
-    grpNote:'Estimado proxy: 120 apariciones (laterales) × rating de referencia conservador ~4,0. Se lo suma por rating/volumen para ampliar la frecuencia sobre el target; no hay dato real por inserción. Pago a 15 días, contrato 2 meses set–oct.',
-    notes:[
-      '60 minutos de laterales (mañana / vespertino / noche), 44 días hábiles, contrato 2 meses set–oct.',
-      'Reparto: Desayunos Informales 2A (44 salidas) + Telemundo mediodía (76). Criterio de reparto: rating.',
-    ],
-    audience:{ items:[
-      {label:'Formato', value:'Laterales / zócalos'},
-      {label:'Programas', value:'Desayunos Informales + Telemundo mediodía'},
-      {label:'Salidas (Desayunos / Telemundo)', value:'44 / 76'},
-      {label:'Criterio de selección', value:'Rating (volumen)'},
-      {label:'Pago', value:'A 15 días'},
-    ], source:'Plan de medios (primera pestaña del Excel).'},
-  },
+  { id:'canal10', name:'Canal 10', scope:'nacional', hex:'#1F3864',
+    costUyu:600000, costUsd:15000, salidas:240, seconds:7200, weekly:[24,30,30,30,26,25,25,25,25],
+    detail:'120 minutos de laterales (pauteable en Subrayado Mediodía y Arriba Gente), 44 días hábiles (~163" por día hábil), contrato por 2 meses set-oct.',
+    grpNote:'Rating de referencia de cada programa (Kantar Ibope) — no hay rating real por cada inserción lateral, así que el GRP de Canal 10 es una estimación proxy por programa.',
+    programs:[
+      { name:'Subrayado Mediodía', spots:147, share:61, weekly:[15,19,19,18,16,15,15,15,15],
+        readings:[{date:'Vie 30/05/2025 · "Subrayado Temprano"',rating:2.16},{date:'Jue 29/05/2025 · "Subrayado"',rating:2.74}],
+        profile:{ f:62, m:38, age60:51, nse:{alto:24,malto:27,medio:24,mbajo:17,bajo:8} },
+        why:'El mejor calce de NSE de los seis espacios contratados — 51% Alto+Medio-Alto. Como el rating no diferencia a Subrayado de Arriba Gente, esto es lo que decide que se lleve la mayor parte del presupuesto de Canal 10.' },
+      { name:'Arriba Gente', spots:93, share:39, weekly:[9,11,11,12,10,10,10,10,10],
+        readings:[{date:'Jue 29/05/2025 (Hogares)',rating:2.06},{date:'Vie 30/05/2025 (Individuos 6+)',rating:2.78}],
+        profile:{ f:53, m:47, age60:54, nse:{alto:13,malto:19,medio:23,mbajo:21,bajo:24} },
+        why:'Mismo target senior que el resto del plan, en un horario de mañana que no compite con Subrayado (mediodía) — suma alcance en un momento del día distinto en vez de duplicar audiencia.' },
+    ] },
+  { id:'canal12', name:'Canal 12', scope:'nacional', hex:'#3E7CB1',
+    costUyu:320000, costUsd:8000, salidas:120, seconds:3600, weekly:[11,14,14,14,13,14,14,13,13],
+    detail:'60 minutos de laterales (Desayunos Informales 2A + Telemundo Mediodía), contrato por 2 meses set-oct. Pago a 15 días.',
+    grpNote:'A diferencia de Canal 10, sí cuenta con rating real por programa (Kantar Ibope) — es el dato de TV más sólido del plan.',
+    programs:[
+      { name:'Desayunos Informales 2A', spots:59, share:49, weekly:[5,7,7,7,7,7,7,6,6],
+        readings:[{date:'Vie 30/05/2025',rating:3.05},{date:'Jue 29/05/2025 (como "Buenos Informales 2A")',rating:1.91}],
+        profile:{ f:65, m:35, ageNote:'50 años y más', nseNote:'Mayormente Medio y Medio-Alto' },
+        why:'Mismo horario que Arriba Gente en Canal 10, pero en otro canal — al no competir por el mismo espectador en el mismo instante, suma alcance incremental.' },
+      { name:'Telemundo Mediodía', spots:61, share:51, weekly:[6,7,7,7,6,7,7,7,7],
+        readings:[{date:'Vie 30/05/2025',rating:2.54},{date:'Jue 29/05/2025',rating:2.54}],
+        profile:{ f:55, m:45, ageNote:'50 años y más', nseNote:'Mayormente Medio y Medio-Alto' },
+        why:'Mediodía es el horario de mejor calce de NSE de todo el plan — este programa refuerza esa franja con una segunda pantalla, ampliando alcance sin salir del target.' },
+    ] },
 ];
-const TV_TOTAL = {
-  costUyu: TV_CHANNELS.reduce((a,s)=>a+s.costUyu,0),
-  costUsd: TV_CHANNELS.reduce((a,s)=>a+s.costUsd,0),
-  spots: TV_CHANNELS.reduce((a,s)=>a+s.weekly.reduce((x,y)=>x+y,0),0),
-  grp: TV_CHANNELS.reduce((a,s)=>a+s.grp,0),
-  sec: TV_CHANNELS.reduce((a,s)=>a+s.weekly.reduce((x,y)=>x+y,0)*s.secPerSpot,0),
-};
+TV_CHANNELS.forEach(ch=>{
+  ch.programs.forEach(p=>{ p.ratingAvg = Math.round((p.readings.reduce((a,r)=>a+r.rating,0)/p.readings.length)*100)/100; p.grp = Math.round(p.ratingAvg*p.spots); });
+  ch.grp = ch.programs.reduce((a,p)=>a+p.grp,0);
+});
 
-const ALL_ITEMS = [ ...RADIO_STATIONS, ...TV_CHANNELS ];
-const TOTAL_UYU = RADIO_TOTAL.costUyu + TV_TOTAL.costUyu;
-const TOTAL_USD = RADIO_TOTAL.costUsd + TV_TOTAL.costUsd;
-const TOTAL_SPOTS = RADIO_TOTAL.spots + TV_TOTAL.spots;
-const TOTAL_SEC = RADIO_TOTAL.sec + TV_TOTAL.sec;
-
-const SCOPE_TOTALS = { nacional:0, montevideo:0 };
-ALL_ITEMS.forEach(s => SCOPE_TOTALS[s.scope]+=s.costUyu);
-
-// ---------- Cuadro comparativo Factum ----------
-const COMP = [
-  {em:'Sarandí 690 AM',    tot:'0,84', abc1:'1,55', man:'4,70', s5059:'0,90', s60:'1,79', rol:'Ancla principal — sobriedad + ABC1 + 50+', plan:true},
-  {em:'Azul 101.9 FM',     tot:'1,24', abc1:'1,52', man:'3,44', s5059:'1,40', s60:'1,23', rol:'Alcance equilibrado en todo el target +45', plan:true},
-  {em:'Del Sol 99.5 FM',   tot:'1,50', abc1:'2,16', man:'6,28', s5059:'1,29', s60:'0,93', rol:'Volumen ABC1 — decisores 45–55', plan:true},
-  {em:'Radiomundo 1170 AM',tot:'0,24', abc1:'0,63', man:'2,56', s5059:'0,29', s60:'0,40', rol:'Nicho ABC1 premium / previsión de valor', plan:false},
-  {em:'Del Plata 95.5 FM', tot:'0,79', abc1:'0,50', man:'1,22', s5059:'1,20', s60:'1,40', rol:'Acompañamiento musical / frecuencia continua', plan:false},
-  {em:'Carve 850 AM',      tot:'0,28', abc1:'0,49', man:'1,24', s5059:'0,38', s60:'0,62', rol:'Respaldo periodístico e informativo', plan:false},
-  {em:'Monte Carlo 930 AM',tot:'1,09', abc1:'0,40', man:'0,85', s5059:'0,83', s60:'3,49', rol:'Volumen bruto senior — promociones masivas', plan:false},
+// ---------- BACKUP ----------
+const BACKUP = [
+  { name:'Radiomundo 1170 AM', rating:{total:0.24,abc1:0.63,manana:2.56,r5059:0.29,r60:0.40}, role:'Nicho ABC1 premium / previsión de valor' },
+  { name:'Del Plata 95.5 FM', rating:{total:0.79,abc1:0.50,manana:1.22,r5059:1.20,r60:1.40}, role:'Acompañamiento musical / frecuencia continua' },
+  { name:'Carve 850 AM', rating:{total:0.28,abc1:0.49,manana:1.24,r5059:0.38,r60:0.62}, role:'Respaldo periodístico e informativo' },
+  { name:'Monte Carlo 930 AM', rating:{total:1.09,abc1:0.40,manana:0.85,r5059:0.83,r60:3.49}, role:'Volumen bruto senior / promociones masivas' },
 ];
 
-// ---------- Calendario de flighting (44 días hábiles) ----------
-// radios = 2/día constante; se registra c10 y c12 por día
+// ---------- SEGMENTOS CLIENTE ----------
+const CLIENT_SEGMENTS = [
+  { id:'A', edad:'60-69', label:'A · Núcleo', pctVentas:23.3, mora:7.7, alDia:50.8, rol:'Prioridad máxima', color:'#2E7D5B' },
+  { id:'B', edad:'50-59', label:'B · Escalable', pctVentas:23.4, mora:13.4, alDia:35.5, rol:'Prioridad alta', color:'#6DB78F' },
+  { id:'C', edad:'40-49', label:'C · Desarrollo', pctVentas:17.3, mora:13.9, alDia:33.3, rol:'Testeo, no masivo', color:'#C99A3B' },
+  { id:'D', edad:'70+', label:'D · Resolución', pctVentas:19.2, mora:3.1, alDia:56.6, rol:'Campaña aparte', color:'#6C5CD6' },
+  { id:'E', edad:'<40', label:'E · Baja prioridad', pctVentas:16.8, mora:17.0, alDia:22.3, rol:'Solo testeo', color:'#C96A6A' },
+];
+function segmentBlend(st){
+  const totalGrp = st.reduce((a,s)=>a+s.grp,0);
+  const b={AD:0,B:0,C:0,E:0};
+  st.forEach(s=>{ const g=s.grp; b.AD+=g*(s.composition.e60/100); b.B+=g*(s.composition.e5059/100); b.C+=g*(s.composition.e4049/100); b.E+=g*((s.composition.e1829+s.composition.e3039)/100); });
+  return { totalGrp, AD:Math.round(b.AD/totalGrp*1000)/10, B:Math.round(b.B/totalGrp*1000)/10, C:Math.round(b.C/totalGrp*1000)/10, E:Math.round(b.E/totalGrp*1000)/10 };
+}
+const RADIO_BLEND = segmentBlend(STATIONS);
+
+const TOTAL_RADIO_UYU=STATIONS.reduce((a,s)=>a+s.costUyu,0), TOTAL_RADIO_USD=STATIONS.reduce((a,s)=>a+s.costUsd,0);
+const TOTAL_TV_UYU=TV_CHANNELS.reduce((a,c)=>a+c.costUyu,0), TOTAL_TV_USD=TV_CHANNELS.reduce((a,c)=>a+c.costUsd,0);
+const TOTAL_UYU=TOTAL_RADIO_UYU+TOTAL_TV_UYU, TOTAL_USD=TOTAL_RADIO_USD+TOTAL_TV_USD;
+const TOTAL_SALIDAS=STATIONS.reduce((a,s)=>a+s.salidas,0)+TV_CHANNELS.reduce((a,c)=>a+c.salidas,0);
+const RADIO_SALIDAS=STATIONS.reduce((a,s)=>a+s.salidas,0), TV_SALIDAS=TV_CHANNELS.reduce((a,c)=>a+c.salidas,0);
+const TOTAL_SEC=STATIONS.reduce((a,s)=>a+s.seconds,0)+TV_CHANNELS.reduce((a,c)=>a+c.seconds,0);
+const GRP_RADIO=STATIONS.reduce((a,s)=>a+s.grp,0), GRP_TV=TV_CHANNELS.reduce((a,c)=>a+c.grp,0), GRP_ALL=GRP_RADIO+GRP_TV;
+const bestAbc1=STATIONS.reduce((a,s)=>s.rating.abc1>a.rating.abc1?s:a,STATIONS[0]);
+const best60=STATIONS.reduce((a,s)=>s.rating.r60>a.rating.r60?s:a,STATIONS[0]);
+const SCOPE_TOTALS={nacional:0,montevideo:0};
+[...STATIONS,...TV_CHANNELS].forEach(m=>SCOPE_TOTALS[m.scope]+=m.costUyu);
+
+// ---------- Calendario flighting (44 días) ----------
 const DAILY = [
-  {d:'01/09',dow:'Ma',mes:'SET',wk:'S1',c10:6,c12:3},{d:'02/09',dow:'Mi',mes:'SET',wk:'S1',c10:6,c12:3},{d:'03/09',dow:'Ju',mes:'SET',wk:'S1',c10:6,c12:3},{d:'04/09',dow:'Vi',mes:'SET',wk:'S1',c10:6,c12:2},
-  {d:'07/09',dow:'Lu',mes:'SET',wk:'S2',c10:6,c12:3},{d:'08/09',dow:'Ma',mes:'SET',wk:'S2',c10:6,c12:3},{d:'09/09',dow:'Mi',mes:'SET',wk:'S2',c10:6,c12:3},{d:'10/09',dow:'Ju',mes:'SET',wk:'S2',c10:6,c12:3},{d:'11/09',dow:'Vi',mes:'SET',wk:'S2',c10:6,c12:2},
-  {d:'14/09',dow:'Lu',mes:'SET',wk:'S3',c10:6,c12:3},{d:'15/09',dow:'Ma',mes:'SET',wk:'S3',c10:6,c12:3},{d:'16/09',dow:'Mi',mes:'SET',wk:'S3',c10:6,c12:3},{d:'17/09',dow:'Ju',mes:'SET',wk:'S3',c10:6,c12:3},{d:'18/09',dow:'Vi',mes:'SET',wk:'S3',c10:6,c12:2},
-  {d:'21/09',dow:'Lu',mes:'SET',wk:'S4',c10:6,c12:3},{d:'22/09',dow:'Ma',mes:'SET',wk:'S4',c10:6,c12:3},{d:'23/09',dow:'Mi',mes:'SET',wk:'S4',c10:6,c12:3},{d:'24/09',dow:'Ju',mes:'SET',wk:'S4',c10:6,c12:3},{d:'25/09',dow:'Vi',mes:'SET',wk:'S4',c10:6,c12:2},
-  {d:'28/09',dow:'Lu',mes:'SET',wk:'S5',c10:6,c12:3},{d:'29/09',dow:'Ma',mes:'SET',wk:'S5',c10:5,c12:3},{d:'30/09',dow:'Mi',mes:'SET',wk:'S5',c10:5,c12:2},
-  {d:'01/10',dow:'Ju',mes:'OCT',wk:'O1',c10:5,c12:3},{d:'02/10',dow:'Vi',mes:'OCT',wk:'O1',c10:5,c12:2},
-  {d:'05/10',dow:'Lu',mes:'OCT',wk:'O2',c10:5,c12:3},{d:'06/10',dow:'Ma',mes:'OCT',wk:'O2',c10:5,c12:3},{d:'07/10',dow:'Mi',mes:'OCT',wk:'O2',c10:5,c12:3},{d:'08/10',dow:'Ju',mes:'OCT',wk:'O2',c10:5,c12:3},{d:'09/10',dow:'Vi',mes:'OCT',wk:'O2',c10:5,c12:2},
-  {d:'12/10',dow:'Lu',mes:'OCT',wk:'O3',c10:5,c12:3},{d:'13/10',dow:'Ma',mes:'OCT',wk:'O3',c10:5,c12:3},{d:'14/10',dow:'Mi',mes:'OCT',wk:'O3',c10:5,c12:3},{d:'15/10',dow:'Ju',mes:'OCT',wk:'O3',c10:5,c12:3},{d:'16/10',dow:'Vi',mes:'OCT',wk:'O3',c10:5,c12:2},
-  {d:'19/10',dow:'Lu',mes:'OCT',wk:'O4',c10:5,c12:3},{d:'20/10',dow:'Ma',mes:'OCT',wk:'O4',c10:5,c12:3},{d:'21/10',dow:'Mi',mes:'OCT',wk:'O4',c10:5,c12:2},{d:'22/10',dow:'Ju',mes:'OCT',wk:'O4',c10:5,c12:3},{d:'23/10',dow:'Vi',mes:'OCT',wk:'O4',c10:5,c12:2},
-  {d:'26/10',dow:'Lu',mes:'OCT',wk:'O5',c10:5,c12:3},{d:'27/10',dow:'Ma',mes:'OCT',wk:'O5',c10:5,c12:3},{d:'28/10',dow:'Mi',mes:'OCT',wk:'O5',c10:5,c12:2},{d:'29/10',dow:'Ju',mes:'OCT',wk:'O5',c10:5,c12:3},{d:'30/10',dow:'Vi',mes:'OCT',wk:'O5',c10:5,c12:2},
+  {d:'01/09',dow:'Ma',mes:'SET',c10:6,c12:3},{d:'02/09',dow:'Mi',mes:'SET',c10:6,c12:3},{d:'03/09',dow:'Ju',mes:'SET',c10:6,c12:3},{d:'04/09',dow:'Vi',mes:'SET',c10:6,c12:2},
+  {d:'07/09',dow:'Lu',mes:'SET',c10:6,c12:3},{d:'08/09',dow:'Ma',mes:'SET',c10:6,c12:3},{d:'09/09',dow:'Mi',mes:'SET',c10:6,c12:3},{d:'10/09',dow:'Ju',mes:'SET',c10:6,c12:3},{d:'11/09',dow:'Vi',mes:'SET',c10:6,c12:2},
+  {d:'14/09',dow:'Lu',mes:'SET',c10:6,c12:3},{d:'15/09',dow:'Ma',mes:'SET',c10:6,c12:3},{d:'16/09',dow:'Mi',mes:'SET',c10:6,c12:3},{d:'17/09',dow:'Ju',mes:'SET',c10:6,c12:3},{d:'18/09',dow:'Vi',mes:'SET',c10:6,c12:2},
+  {d:'21/09',dow:'Lu',mes:'SET',c10:6,c12:3},{d:'22/09',dow:'Ma',mes:'SET',c10:6,c12:3},{d:'23/09',dow:'Mi',mes:'SET',c10:6,c12:3},{d:'24/09',dow:'Ju',mes:'SET',c10:6,c12:3},{d:'25/09',dow:'Vi',mes:'SET',c10:6,c12:2},
+  {d:'28/09',dow:'Lu',mes:'SET',c10:6,c12:3},{d:'29/09',dow:'Ma',mes:'SET',c10:5,c12:3},{d:'30/09',dow:'Mi',mes:'SET',c10:5,c12:2},
+  {d:'01/10',dow:'Ju',mes:'OCT',c10:5,c12:3},{d:'02/10',dow:'Vi',mes:'OCT',c10:5,c12:2},
+  {d:'05/10',dow:'Lu',mes:'OCT',c10:5,c12:3},{d:'06/10',dow:'Ma',mes:'OCT',c10:5,c12:3},{d:'07/10',dow:'Mi',mes:'OCT',c10:5,c12:3},{d:'08/10',dow:'Ju',mes:'OCT',c10:5,c12:3},{d:'09/10',dow:'Vi',mes:'OCT',c10:5,c12:2},
+  {d:'12/10',dow:'Lu',mes:'OCT',c10:5,c12:3},{d:'13/10',dow:'Ma',mes:'OCT',c10:5,c12:3},{d:'14/10',dow:'Mi',mes:'OCT',c10:5,c12:3},{d:'15/10',dow:'Ju',mes:'OCT',c10:5,c12:3},{d:'16/10',dow:'Vi',mes:'OCT',c10:5,c12:2},
+  {d:'19/10',dow:'Lu',mes:'OCT',c10:5,c12:3},{d:'20/10',dow:'Ma',mes:'OCT',c10:5,c12:3},{d:'21/10',dow:'Mi',mes:'OCT',c10:5,c12:2},{d:'22/10',dow:'Ju',mes:'OCT',c10:5,c12:3},{d:'23/10',dow:'Vi',mes:'OCT',c10:5,c12:2},
+  {d:'26/10',dow:'Lu',mes:'OCT',c10:5,c12:3},{d:'27/10',dow:'Ma',mes:'OCT',c10:5,c12:3},{d:'28/10',dow:'Mi',mes:'OCT',c10:5,c12:2},{d:'29/10',dow:'Ju',mes:'OCT',c10:5,c12:3},{d:'30/10',dow:'Vi',mes:'OCT',c10:5,c12:2},
 ];
 
-// ---------- RENDER: KPI tiempo aire ----------
-document.getElementById('kpiTiempoAire').textContent = secToHuman(TOTAL_SEC);
+// ================= RENDER =================
+// KPIs
+document.getElementById('kpis').innerHTML = [
+  {l:'Inversión total', v:'$1.403.120', s:'USD 35.078 + IVA'},
+  {l:'Salidas totales (radio + TV)', v:nf(TOTAL_SALIDAS), s:`radio ${RADIO_SALIDAS} · TV ${TV_SALIDAS} · sin PNT`},
+  {l:'Tiempo total en aire', v:secToHuman(TOTAL_SEC), s:`${nf(TOTAL_SEC)} segundos`},
+  {l:'GRP total estimado', v:nf(GRP_ALL), s:`Radio ${nf(GRP_RADIO)} (Factum) + TV ${nf(GRP_TV)} (Ibope)`},
+  {l:'Rating ABC1 más alto', v:bestAbc1.rating.abc1.toLocaleString('es-UY')+' pts', s:bestAbc1.name},
+  {l:'Mejor rating +60 años', v:best60.rating.r60.toLocaleString('es-UY')+' pts', s:best60.name},
+].map(k=>`<div class="kpi"><div class="label">${k.l}</div><div class="value mono">${k.v}</div><div class="sub">${k.s}</div></div>`).join('');
 
-// ---------- RENDER: GRP strip ----------
-const grpItems = [
-  {label:'Sarandí 690', grp:RADIO_STATIONS[0].grp, basis:RADIO_STATIONS[0].grpBasis},
-  {label:'Del Sol FM', grp:RADIO_STATIONS[1].grp, basis:RADIO_STATIONS[1].grpBasis},
-  {label:'Azul FM', grp:RADIO_STATIONS[2].grp, basis:RADIO_STATIONS[2].grpBasis},
-  {label:'Canal 10 (proxy)', grp:TV_CHANNELS[0].grp, basis:TV_CHANNELS[0].grpBasis},
-  {label:'Canal 12 (proxy)', grp:TV_CHANNELS[1].grp, basis:TV_CHANNELS[1].grpBasis},
+// GRP strip
+const grpItems=[
+  {label:'Sarandí 690', grp:STATIONS[0].grp, basis:'real'},
+  {label:'Del Sol FM', grp:STATIONS[1].grp, basis:'real'},
+  {label:'Azul FM', grp:STATIONS[2].grp, basis:'real'},
+  {label:'Canal 10', grp:TV_CHANNELS[0].grp, basis:'proxy'},
+  {label:'Canal 12', grp:TV_CHANNELS[1].grp, basis:'real'},
 ];
-document.getElementById('grpStrip').innerHTML = grpItems.map(g => `
-  <div class="mini-stat">
-    <div class="l">${g.label}</div>
-    <div class="v">${g.grp} <span style="font-size:10px; font-weight:700;">GRP</span></div>
-    <div style="margin-top:5px;">${basisPill(g.basis)}</div>
-  </div>
-`).join('');
+document.getElementById('grpStrip').innerHTML = grpItems.map(g=>`<div class="mini-stat"><div class="l">${g.label}</div><div class="v">${g.grp} <span style="font-size:10px;font-weight:700;">GRP</span></div><div style="margin-top:5px;">${basisPill(g.basis)}</div></div>`).join('');
 
-// ---------- RENDER: geo chart + list ----------
-const geoEntries = Object.entries(SCOPE_TOTALS).filter(([k,v])=>v>0).map(([k,v])=>({key:k, ...SCOPES[k], value:v}));
-new Chart(document.getElementById('chartGeo'), {
-  type:'bar',
-  data:{ labels:geoEntries.map(e=>e.label), datasets:[{ data:geoEntries.map(e=>e.value), backgroundColor:geoEntries.map(e=>e.color), borderRadius:4 }] },
-  options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    scales:{ x:{ ticks:{ callback:v=>'$'+(v/1000).toLocaleString('es-UY')+'k' }, grid:{color:'#EEF0F4'} }, y:{ grid:{display:false} } },
-    plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>fmt(c.parsed.x) } } } }
-});
-document.getElementById('geoList').innerHTML = geoEntries.map(e=>{
-  const pct = ((e.value/TOTAL_UYU)*100).toFixed(1);
-  return `<div style="display:flex; align-items:center; gap:10px; border:1px solid ${e.color}30; border-radius:9px; padding:9px 12px;">
-    <div style="width:9px;height:9px;border-radius:2px;background:${e.color};flex-shrink:0;"></div>
-    <div style="flex:1;"><div style="font-size:12.5px; font-weight:700;">${e.label}</div><div style="font-size:10.5px; color:var(--muted-2);">${pct}% de la inversión</div></div>
-    <div class="mono" style="font-size:12.5px; font-weight:800;">${fmt(e.value)}</div>
-  </div>`;
-}).join('');
+// Geo
+const geoEntries=Object.entries(SCOPE_TOTALS).filter(([k,v])=>v>0).map(([k,v])=>({key:k,...SCOPES[k],value:v}));
+new Chart(document.getElementById('chartGeo'),{type:'bar',data:{labels:geoEntries.map(e=>e.label),datasets:[{data:geoEntries.map(e=>e.value),backgroundColor:geoEntries.map(e=>e.color),borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{callback:v=>'$'+(v/1000).toLocaleString('es-UY')+'k'},grid:{color:'#EEF0F4'}},y:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.x)}}}}});
+document.getElementById('geoList').innerHTML=geoEntries.map(e=>{const pct=((e.value/TOTAL_UYU)*100).toFixed(1);return `<div style="display:flex;align-items:center;gap:10px;border:1px solid ${e.color}30;border-radius:9px;padding:9px 12px;"><div style="width:9px;height:9px;border-radius:2px;background:${e.color};flex-shrink:0;"></div><div style="flex:1;"><div style="font-size:12.5px;font-weight:700;">${e.label}</div><div style="font-size:10.5px;color:var(--muted-2);">${pct}% de la inversión</div></div><div class="mono" style="font-size:12.5px;font-weight:800;">${fmt(e.value)}</div></div>`;}).join('');
 
-// ---------- RENDER: inversión por medio ----------
-const medioData = [
-  {label:'Televisión', value:TV_TOTAL.costUyu, color:'#1F3864'},
-  {label:'Radio', value:RADIO_TOTAL.costUyu, color:'#B8860B'},
-];
-new Chart(document.getElementById('chartMedio'), {
-  type:'doughnut',
-  data:{ labels:medioData.map(d=>d.label), datasets:[{ data:medioData.map(d=>d.value), backgroundColor:medioData.map(d=>d.color), borderColor:'#fff', borderWidth:2 }] },
-  options:{ responsive:true, maintainAspectRatio:false, cutout:'62%', plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.parsed)}} } }
-});
-document.getElementById('legendMedio').innerHTML = medioData.map(d=>{
-  const pct = ((d.value/TOTAL_UYU)*100).toFixed(1);
-  return `<div class="item"><span class="dot" style="background:${d.color};"></span>${d.label} <b style="color:var(--muted-2);">${pct}%</b></div>`;
-}).join('');
+// Inversión por medio (per línea)
+const investData=[...STATIONS.map(s=>({name:s.name,value:s.costUyu,color:s.hex,id:s.id})),...TV_CHANNELS.map(c=>({name:c.name,value:c.costUyu,color:c.hex,id:c.id}))];
+new Chart(document.getElementById('chartMedio'),{type:'doughnut',data:{labels:investData.map(d=>d.name),datasets:[{data:investData.map(d=>d.value),backgroundColor:investData.map(d=>d.color),borderColor:'#fff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.parsed)}}}}});
+document.getElementById('legendMedio').innerHTML=investData.map(d=>{const pct=((d.value/TOTAL_UYU)*100).toFixed(1);return `<div class="item" data-sel="${d.id}"><span class="dot" style="background:${d.color};"></span>${d.name} <b style="color:var(--muted-2);">${pct}%</b></div>`;}).join('');
 
-// ---------- RENDER: flighting semanal ----------
-new Chart(document.getElementById('chartFlight'), {
-  type:'line',
-  data:{ labels:WEEKS9, datasets:[
-    ...RADIO_STATIONS.map(s=>({ label:s.name, data:s.weekly, borderColor:s.hex, backgroundColor:s.hex, tension:.3, pointRadius:0, borderWidth:2 })),
-    ...TV_CHANNELS.map(s=>({ label:s.name, data:s.weekly, borderColor:s.hex, backgroundColor:s.hex, tension:.3, pointRadius:0, borderWidth:2, borderDash:[4,3] })),
-  ]},
-  options:{ responsive:true, maintainAspectRatio:false,
-    scales:{ y:{ grid:{color:'#EEF0F4'} }, x:{ grid:{display:false} } },
-    plugins:{ legend:{ position:'bottom', labels:{ boxWidth:9, font:{size:10.5} } } } }
-});
+// Flighting semanal
+new Chart(document.getElementById('chartFlight'),{type:'line',data:{labels:WEEKS9,datasets:[
+  ...STATIONS.map(s=>({label:s.name,data:s.weekly,borderColor:s.hex,backgroundColor:s.hex,tension:.3,pointRadius:0,borderWidth:2})),
+  ...TV_CHANNELS.map(c=>({label:c.name,data:c.weekly,borderColor:c.hex,backgroundColor:c.hex,tension:.3,pointRadius:0,borderWidth:2,borderDash:[4,3]})),
+]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{grid:{color:'#EEF0F4'}},x:{grid:{display:false}}},plugins:{legend:{position:'bottom',labels:{boxWidth:9,font:{size:10.5}}}}}});
 
-// ---------- RENDER: eficiencia costo/GRP ----------
-const effData = ALL_ITEMS.map(m=>({
-  label: m.grpBasis==='proxy' ? m.name+' (proxy)' : m.name,
-  value: m.costUyu / m.grp,
-  color: m.hex,
-})).sort((a,b)=>a.value-b.value);
-new Chart(document.getElementById('chartEfficiency'), {
-  type:'bar',
-  data:{ labels:effData.map(d=>d.label), datasets:[{ data:effData.map(d=>Math.round(d.value)), backgroundColor:effData.map(d=>d.color), borderRadius:4 }] },
-  options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    scales:{ x:{ title:{display:true, text:'$ por punto de GRP', font:{size:11}}, grid:{color:'#EEF0F4'} }, y:{ grid:{display:false} } },
-    plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>'$'+c.parsed.x.toLocaleString('es-UY')+' / GRP' } } } }
-});
+// Eficiencia
+const effData=[...STATIONS,...TV_CHANNELS].map(m=>({label:m.programs&&m.programs[0]&&m.programs[0].name?m.name+' (Ibope)':m.name, value:m.costUyu/m.grp, color:m.hex})).sort((a,b)=>a.value-b.value);
+new Chart(document.getElementById('chartEfficiency'),{type:'bar',data:{labels:effData.map(d=>d.label),datasets:[{data:effData.map(d=>Math.round(d.value)),backgroundColor:effData.map(d=>d.color),borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{title:{display:true,text:'$ por punto de GRP',font:{size:11}},grid:{color:'#EEF0F4'}},y:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'$'+c.parsed.x.toLocaleString('es-UY')+' / GRP'}}}}});
 
-// ---------- MEDIO CARDS + DETAIL ----------
-let selected = 'radio';
-let stationId = 'sarandi';
-let channelId = 'canal10';
+// Ranking ABC1
+const rankData=[...STATIONS.map(s=>({name:s.name,abc1:s.rating.abc1,contracted:true})),...BACKUP.map(s=>({name:s.name,abc1:s.rating.abc1,contracted:false}))].sort((a,b)=>b.abc1-a.abc1);
+new Chart(document.getElementById('chartRanking'),{type:'bar',data:{labels:rankData.map(d=>d.name),datasets:[{data:rankData.map(d=>d.abc1),backgroundColor:rankData.map(d=>d.contracted?'#1F7A4C':'#98A2B3'),borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{title:{display:true,text:'Rating ABC1 (L-V)',font:{size:11}},grid:{color:'#EEF0F4'}},y:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x+' pts'}}}}});
 
-function medioCardHtml(id, group, name, sub, color, invest, statLabel, statValue, tags){
-  const active = selected===id;
-  return `<button class="medio-card ${active?'active':''}" style="--accent:${color}; --accent-tint:${color}14;" data-medio="${id}">
-    <div class="medio-card-top">
-      <div class="medio-name-wrap">
-        <div class="medio-icon" style="background:${color};">${name[0]}</div>
-        <div><div class="medio-group" style="color:${color};">${group}</div><div class="medio-name">${name}</div></div>
-      </div>
-      <span class="chevron">▾</span>
-    </div>
+// ---------- MEDIA CARDS + DETAIL ----------
+let selected='sarandi';
+const ALL=[...STATIONS.map(s=>({...s,kind:'radio'})),...TV_CHANNELS.map(c=>({...c,kind:'tv'}))];
+function cardHtml(m){
+  const color=m.hex, active=selected===m.id, isTv=m.kind==='tv';
+  const sub=isTv?m.programs.map(p=>p.name).join(' + '):m.programs;
+  const tags=isTv?scopePill(m.scope):`<span class="pill role">${m.role}</span>`;
+  return `<button class="medio-card ${active?'active':''}" style="--accent:${color};--accent-tint:${color}14;" data-medio="${m.id}">
+    <div class="medio-card-top"><div class="medio-name-wrap"><div class="medio-icon" style="background:${color};">${isTv?'T':'R'}</div><div><div class="medio-group" style="color:${color};">${isTv?'TV':'RADIO'}</div><div class="medio-name">${m.name}</div></div></div><span class="chevron">▾</span></div>
     <div class="medio-sub">${sub}</div>
     <div class="medio-tags">${tags}</div>
-    <div class="medio-stats">
-      <div><div class="medio-stat-label">Inversión</div><div class="medio-stat-value mono">${fmt(invest)}</div></div>
-      <div><div class="medio-stat-label">${statLabel}</div><div class="medio-stat-value mono">${statValue}</div></div>
-    </div>
+    <div class="medio-stats"><div><div class="medio-stat-label">Inversión</div><div class="medio-stat-value mono">${fmt(m.costUyu)}</div></div><div><div class="medio-stat-label">Salidas</div><div class="medio-stat-value mono">${m.salidas}</div></div><div><div class="medio-stat-label">GRP</div><div class="medio-stat-value mono">${m.grp}</div></div></div>
   </button>`;
 }
-
-function renderMedioCards(){
-  document.getElementById('medioCards').innerHTML =
-    medioCardHtml('radio','RADIO','Radio', 'Sarandí 690 · Del Sol · Azul FM', '#B8860B', RADIO_TOTAL.costUyu, 'Salidas (3 emisoras)', fmtNum(RADIO_TOTAL.spots), scopePill('nacional')+scopePill('montevideo')) +
-    medioCardHtml('tv','TV','Televisión', 'Canal 10 · Canal 12', '#1F3864', TV_TOTAL.costUyu, 'Salidas (2 canales)', fmtNum(TV_TOTAL.spots), scopePill('nacional'));
-
-  document.querySelectorAll('.medio-card').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const id = btn.dataset.medio;
-      selected = (selected===id) ? null : id;
-      renderMedioCards();
-      renderDetail();
-    });
-  });
+function renderCards(){
+  document.getElementById('medioCards').innerHTML=ALL.map(cardHtml).join('');
+  document.querySelectorAll('.medio-card').forEach(b=>b.addEventListener('click',()=>{ const id=b.dataset.medio; selected=(selected===id)?null:id; renderCards(); renderDetail(); }));
 }
-
-function stationPanelHtml(s){
-  const spotsTotal = s.weekly.reduce((a,b)=>a+b,0);
-  const notesHtml = s.notes.map(n=>`<li>${n}</li>`).join('');
-  const audHtml = s.audience.items.map(it=>`<div class="audience-item"><span class="l">${it.label}</span><span class="v mono">${it.value}</span></div>`).join('');
-  return `
-  <div style="border:1px solid ${s.hex}40; border-radius:12px; padding:18px; margin-top:14px; background:#fff;">
-    <div class="mini-stats">
-      <div class="mini-stat"><div class="l">Inversión UYU</div><div class="v mono">${fmt(s.costUyu)}</div></div>
-      <div class="mini-stat"><div class="l">Inversión USD</div><div class="v mono">${fmtUsd(s.costUsd)}</div></div>
-      <div class="mini-stat"><div class="l">Salidas de spot</div><div class="v mono">${spotsTotal}</div></div>
-      <div class="mini-stat"><div class="l">Segundos en aire</div><div class="v mono">${secToHuman(spotsTotal*s.secPerSpot)}</div></div>
-      <div class="mini-stat"><div class="l">GRP ${s.grpBasis==='proxy'?'(proxy)':'target'}</div><div class="v accent mono">${s.grp}</div><div style="margin-top:4px;">${basisPill(s.grpBasis)}</div></div>
-    </div>
-    <div class="note-box">${scopePill(s.scope)}<span>${s.grpNote}</span></div>
-    <div class="grid-2">
-      <div><div class="label-eyebrow">Salidas de spot por semana</div>
-        <div style="position:relative; height:190px;"><canvas id="chartStationSpots"></canvas></div>
-      </div>
-      <div><div class="label-eyebrow">Audiencia de referencia</div>
-        ${audHtml}
-        <div style="font-size:10.5px; color:var(--muted-2); margin-top:6px;">Fuente: ${s.audience.source}</div>
-      </div>
-    </div>
-    <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border);">
-      <div class="notes-title">ⓘ Detalle de la propuesta</div>
-      <ul class="notes-list">${notesHtml}</ul>
-    </div>
+function gbar(f,m){ return `<div class="bar-stack"><div style="width:${f}%;background:#C1447E;">${f}% M</div><div style="width:${m}%;background:#3E7CB1;">${m}% H</div></div>`; }
+function nsebar(nse){
+  const segs=[['alto','Alto','#4B3F9E'],['malto','M-Alto','#6F63C0'],['medio','Medio','#9A90DD'],['mbajo','M-Bajo','#C3BCEC'],['bajo','Bajo','#E4E0F7']];
+  const bar=`<div class="bar-stack thin" style="gap:2px;">`+segs.map(([k,l,c])=>nse[k]?`<div style="width:${nse[k]}%;background:${c};"></div>`:'').join('')+`</div>`;
+  const leg=`<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:5px;">`+segs.map(([k,l,c])=>nse[k]?`<span style="font-size:9.5px;color:var(--muted);display:inline-flex;align-items:center;gap:3px;"><span style="width:6px;height:6px;border-radius:2px;background:${c};"></span>${l} ${nse[k]}%</span>`:'').join('')+`</div>`;
+  return bar+leg;
+}
+function programBlock(p,color){
+  return `<div class="prog-block">
+    <div class="prog-head"><span class="n">${p.name}</span><span class="s" style="color:${color};">${p.spots} spots · ${p.share}%</span></div>
+    <div class="mini-stats" style="margin-bottom:12px;"><div class="mini-stat"><div class="l">Rating prom.</div><div class="v accent">${p.ratingAvg}</div></div><div class="mini-stat"><div class="l">GRP (est.)</div><div class="v accent">${p.grp}</div></div></div>
+    <div class="subtle-label">Sexo</div>${gbar(p.profile.f,p.profile.m)}
+    ${p.profile.nse?`<div class="subtle-label">Nivel socioeconómico</div>${nsebar(p.profile.nse)}`:`<div style="font-size:11px;color:var(--muted);margin-top:10px;">${p.profile.ageNote} · NSE: ${p.profile.nseNote}</div>`}
+    ${p.profile.age60!==undefined?`<div style="font-size:11px;color:var(--muted);margin-top:8px;"><b style="color:var(--text);">${p.profile.age60}%</b> tiene 60 años o más.</div>`:''}
+    <div class="subtle-label">Lecturas de rating (Kantar Ibope)</div><div class="readings">${p.readings.map(r=>`<div class="r"><span>${r.date}</span><span class="mono" style="color:var(--text);">${r.rating} pts</span></div>`).join('')}</div>
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11.5px;color:#4A5568;line-height:1.55;">${p.why}</div>
   </div>`;
 }
-
-function groupPanelHtml(kind){
-  const items = kind==='radio' ? RADIO_STATIONS : TV_CHANNELS;
-  const total = kind==='radio' ? RADIO_TOTAL : TV_TOTAL;
-  const accent = kind==='radio' ? '#B8860B' : '#1F3864';
-  const activeId = kind==='radio' ? stationId : channelId;
-  const invLabel = kind==='radio' ? 'Inversión (3 emisoras)' : 'Inversión (2 canales)';
-  const grpLabel = kind==='radio' ? 'GRP target (suma 3 emisoras)' : 'GRP proxy (suma 2 canales)';
-  const intro = kind==='radio'
-    ? 'Las tres emisoras corren en la <b>franja mañana (07–12h)</b>, donde se concentra el target <b>ABC1 +45</b>. Sarandí y Azul tienen <b>alcance nacional</b>; Del Sol es <b>Montevideo</b>. Elegí una emisora para ver su detalle completo.'
-    : '<b>Canal 10</b> aporta el perfil <b>NSE / ABC1</b> (Subrayado mediodía + Arriba Gente) y <b>Canal 12</b> suma <b>rating / volumen</b> (Desayunos Informales + Telemundo mediodía). Al ser canales distintos no compiten: coincidir el mismo día suma frecuencia. Elegí un canal para ver su detalle.';
-  const btns = items.map(s=>`
-    <button class="station-btn ${activeId===s.id?'active':''}" style="${activeId===s.id?`background:${s.hex};border-color:${s.hex};`:''}" data-item="${s.id}" data-kind="${kind}">
-      <span class="station-dot" style="background:${s.hex};"></span>${s.name}${scopePill(s.scope)}
-    </button>`).join('');
-  return `
-  <div class="detail-panel" style="--accent:${accent};">
-    <div class="mini-stats">
-      <div class="mini-stat"><div class="l">${invLabel}</div><div class="v mono">${fmt(total.costUyu)}</div></div>
-      <div class="mini-stat"><div class="l">Inversión USD</div><div class="v mono">${fmtUsd(total.costUsd)}</div></div>
-      <div class="mini-stat"><div class="l">Salidas totales</div><div class="v mono">${total.spots}</div></div>
-      <div class="mini-stat"><div class="l">Segundos en aire</div><div class="v mono">${secToHuman(total.sec)}</div></div>
-      <div class="mini-stat"><div class="l">${grpLabel}</div><div class="v accent mono">${total.grp}</div></div>
-    </div>
-    <div class="note-box"><span>ⓘ</span><span>${intro}</span></div>
-    <div class="station-selector">${btns}</div>
-    <div id="stationDetail"></div>
-  </div>`;
-}
-
 function renderDetail(){
-  const area = document.getElementById('detailArea');
-  if(selected==='radio' || selected==='tv'){
-    const kind = selected;
-    area.innerHTML = groupPanelHtml(kind);
-    document.querySelectorAll('.station-btn').forEach(b=>b.addEventListener('click', ()=>{
-      if(b.dataset.kind==='radio') stationId=b.dataset.item; else channelId=b.dataset.item;
-      renderDetail();
-    }));
-    const items = kind==='radio' ? RADIO_STATIONS : TV_CHANNELS;
-    const activeId = kind==='radio' ? stationId : channelId;
-    const st = items.find(s=>s.id===activeId);
-    document.getElementById('stationDetail').innerHTML = stationPanelHtml(st);
-    renderStationChart(st);
+  const area=document.getElementById('detailArea');
+  const m=ALL.find(x=>x.id===selected);
+  if(!m){ area.innerHTML=''; return; }
+  if(m.kind==='radio'){
+    area.innerHTML=`<div class="detail-panel" style="--accent:${m.hex};">
+      <div class="mini-stats">
+        <div class="mini-stat"><div class="l">Inversión UYU</div><div class="v mono">${fmt(m.costUyu)}</div></div>
+        <div class="mini-stat"><div class="l">Inversión USD</div><div class="v mono">${fmtUsd(m.costUsd)}</div></div>
+        <div class="mini-stat"><div class="l">Salidas de spot</div><div class="v mono">${m.salidas}</div></div>
+        <div class="mini-stat"><div class="l">Segundos en aire</div><div class="v mono">${secToHuman(m.seconds)}</div></div>
+        <div class="mini-stat"><div class="l">Rating ABC1 (L-V)</div><div class="v accent mono">${m.rating.abc1}</div></div>
+        <div class="mini-stat"><div class="l">GRP mañana ABC1 (est.)</div><div class="v accent mono">${m.grp}</div></div>
+      </div>
+      <div class="note-box"><span class="pill role">${m.role}</span><span>GRP = rating de la franja comprada (mañana ABC1, 07–12h: ${m.rating.manana} pts) × ${m.salidas} salidas. ${m.detail}</span></div>
+      <div class="grid-2">
+        <div><div class="label-eyebrow">Salidas de spot por semana</div><div style="position:relative;height:190px;"><canvas id="stWeekly"></canvas></div></div>
+        <div><div class="label-eyebrow">Rating por franja etaria (Factum 2025)</div><div style="position:relative;height:190px;"><canvas id="stAge"></canvas></div></div>
+      </div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);"><div class="notes-title">ⓘ Por qué encaja</div><p class="why-text">${m.why}</p>${m.highlight?`<p class="why-star">★ ${m.highlight}</p>`:''}</div>
+    </div>`;
+    new Chart(document.getElementById('stWeekly'),{type:'bar',data:{labels:WEEKS9,datasets:[{data:m.weekly,backgroundColor:m.hex,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{grid:{color:'#EEF0F4'}},x:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false}}}});
+    const bands=[]; if(m.rating.r4049!==undefined)bands.push(['40-49',m.rating.r4049]); bands.push(['50-59',m.rating.r5059]); bands.push(['≥60',m.rating.r60]);
+    new Chart(document.getElementById('stAge'),{type:'bar',data:{labels:bands.map(b=>b[0]),datasets:[{data:bands.map(b=>b[1]),backgroundColor:'#6C5CD6',borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{grid:{color:'#EEF0F4'}},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' pts'}}}}});
   } else {
-    area.innerHTML = '';
+    area.innerHTML=`<div class="detail-panel" style="--accent:${m.hex};">
+      <div class="mini-stats">
+        <div class="mini-stat"><div class="l">Inversión UYU</div><div class="v mono">${fmt(m.costUyu)}</div></div>
+        <div class="mini-stat"><div class="l">Inversión USD</div><div class="v mono">${fmtUsd(m.costUsd)}</div></div>
+        <div class="mini-stat"><div class="l">Salidas / laterales</div><div class="v mono">${m.salidas}</div></div>
+        <div class="mini-stat"><div class="l">Segundos en aire</div><div class="v mono">${secToHuman(m.seconds)}</div></div>
+        <div class="mini-stat"><div class="l">GRP del canal (est.)</div><div class="v accent mono">${m.grp}</div></div>
+      </div>
+      <div class="note-box"><span class="pill ibope">Kantar Ibope</span><span>${m.grpNote}</span></div>
+      <div class="label-eyebrow">Salidas por semana</div><div style="position:relative;height:170px;margin-bottom:8px;"><canvas id="chWeekly"></canvas></div>
+      <div class="label-eyebrow" style="margin-top:10px;">Programas — reparto, perfil de audiencia y por qué encaja</div>
+      <div class="prog-wrap">${m.programs.map(p=>programBlock(p,m.hex)).join('')}</div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);"><div class="notes-title">ⓘ Detalle de la propuesta</div><p class="why-text">${m.detail}</p></div>
+    </div>`;
+    new Chart(document.getElementById('chWeekly'),{type:'bar',data:{labels:WEEKS9,datasets:[{data:m.weekly,backgroundColor:m.hex,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{grid:{color:'#EEF0F4'}},x:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false}}}});
   }
 }
 
-function renderStationChart(s){
-  new Chart(document.getElementById('chartStationSpots'), {
-    type:'bar',
-    data:{ labels:WEEKS9, datasets:[{ data:s.weekly, backgroundColor:s.hex, borderRadius:4 }] },
-    options:{ responsive:true, maintainAspectRatio:false,
-      scales:{ y:{ grid:{color:'#EEF0F4'} }, x:{ grid:{display:false}, ticks:{font:{size:10}} } },
-      plugins:{ legend:{display:false} } }
-  });
-}
-
-// ---------- CALENDARIO FLIGHTING (heatmap) ----------
+// ---------- Calendario flighting ----------
 function renderFlighting(){
-  const rows = [
-    {name:'Sarandí AM', color:'#2F7D6E', max:2, get:()=>2},
-    {name:'Azul FM', color:'#3E7CB1', max:2, get:()=>2},
-    {name:'Del Sol FM', color:'#C1447E', max:2, get:()=>2},
-    {name:'Canal 10', color:'#1F3864', max:6, get:d=>d.c10},
-    {name:'Canal 12', color:'#C97A2B', max:3, get:d=>d.c12},
-  ];
-  const setCount = DAILY.filter(d=>d.mes==='SET').length;
-  const octCount = DAILY.length - setCount;
-
-  // header: month row + day row
-  let monthRow = `<tr><th class="rowname" rowspan="2" style="vertical-align:bottom;">Medio</th>`;
-  monthRow += `<th class="mhead" colspan="${setCount}">Setiembre</th><th class="mhead" colspan="${octCount}">Octubre</th>`;
-  monthRow += `<th class="totcol" rowspan="2" style="vertical-align:bottom;">Total</th></tr>`;
-  let dayRow = `<tr>`;
-  DAILY.forEach(d=>{ dayRow += `<th class="dhead">${d.d.split('/')[0]}<small>${d.dow}</small></th>`; });
-  dayRow += `</tr>`;
-
-  let body = '';
-  rows.forEach(r=>{
-    const total = DAILY.reduce((a,d)=>a+r.get(d),0);
-    let tds = `<td class="rowname"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${r.color};margin-right:7px;"></span>${r.name}</td>`;
-    DAILY.forEach(d=>{
-      const v = r.get(d);
-      const alpha = v>0 ? (0.16 + 0.66*(v/r.max)) : 0;
-      const bg = v>0 ? hexA(r.color, alpha) : '#fff';
-      tds += `<td class="daycell" style="background:${bg};">${v>0?v:''}</td>`;
-    });
-    tds += `<td class="totcol">${total}</td>`;
-    body += `<tr>${tds}</tr>`;
-  });
-  // total row per day
-  let totTds = `<td class="rowname">Total del día</td>`;
-  DAILY.forEach(d=>{ totTds += `<td class="daycell">${6 + d.c10 + d.c12}</td>`; });
-  totTds += `<td class="totcol">${TOTAL_SPOTS}</td>`;
-  body += `<tr class="totrow">${totTds}</tr>`;
-
-  document.getElementById('flCal').innerHTML = `<thead>${monthRow}${dayRow}</thead><tbody>${body}</tbody>`;
-  document.getElementById('flLegend').innerHTML = rows.map(r=>`<span class="k"><span class="sw" style="background:${r.color};"></span>${r.name} · ${DAILY.reduce((a,d)=>a+r.get(d),0)} salidas</span>`).join('');
+  const rows=[{name:'Sarandí AM',color:'#B8860B',max:2,get:()=>2},{name:'Azul FM',color:'#E4C67C',max:2,get:()=>2},{name:'Del Sol FM',color:'#D8A94A',max:2,get:()=>2},{name:'Canal 10',color:'#1F3864',max:6,get:d=>d.c10},{name:'Canal 12',color:'#3E7CB1',max:3,get:d=>d.c12}];
+  const setC=DAILY.filter(d=>d.mes==='SET').length, octC=DAILY.length-setC;
+  let mh=`<tr><th class="rowname" rowspan="2" style="vertical-align:bottom;">Medio</th><th class="mhead" colspan="${setC}">Setiembre</th><th class="mhead" colspan="${octC}">Octubre</th><th class="totcol" rowspan="2" style="vertical-align:bottom;">Total</th></tr>`;
+  let dh=`<tr>`+DAILY.map(d=>`<th class="dhead">${d.d.split('/')[0]}<small>${d.dow}</small></th>`).join('')+`</tr>`;
+  let body='';
+  rows.forEach(r=>{ const tot=DAILY.reduce((a,d)=>a+r.get(d),0); let t=`<td class="rowname"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${r.color};margin-right:7px;"></span>${r.name}</td>`;
+    DAILY.forEach(d=>{ const v=r.get(d); const a=v>0?(0.16+0.66*(v/r.max)):0; t+=`<td class="daycell" style="background:${v>0?hexA(r.color,a):'#fff'};">${v>0?v:''}</td>`; });
+    t+=`<td class="totcol">${tot}</td>`; body+=`<tr>${t}</tr>`; });
+  let tr=`<td class="rowname">Total del día</td>`+DAILY.map(d=>`<td class="daycell">${6+d.c10+d.c12}</td>`).join('')+`<td class="totcol">${TOTAL_SALIDAS}</td>`;
+  body+=`<tr class="totrow">${tr}</tr>`;
+  document.getElementById('flCal').innerHTML=`<thead>${mh}${dh}</thead><tbody>${body}</tbody>`;
+  document.getElementById('flLegend').innerHTML=rows.map(r=>`<span class="k"><span class="sw" style="background:${r.color};"></span>${r.name} · ${DAILY.reduce((a,d)=>a+r.get(d),0)} salidas</span>`).join('');
 }
 
-// ---------- SUMMARY TABLE ----------
-function renderSummaryTable(){
-  const rows = [
-    ...RADIO_STATIONS.map(s=>({ id:s.id, kind:'radio', name:s.name, group:'RADIO', color:s.hex, scope:SCOPES[s.scope].label, out:s.weekly.reduce((a,b)=>a+b,0), grp:s.grp, basis:s.grpBasis, cpg:Math.round(s.costUyu/s.grp), uyu:s.costUyu, usd:s.costUsd })),
-    ...TV_CHANNELS.map(s=>({ id:s.id, kind:'tv', name:s.name, group:'TV', color:s.hex, scope:SCOPES[s.scope].label, out:s.weekly.reduce((a,b)=>a+b,0), grp:s.grp, basis:s.grpBasis, cpg:Math.round(s.costUyu/s.grp), uyu:s.costUyu, usd:s.costUsd })),
-  ];
-  const body = rows.map(r=>`
-    <tr class="clickable" data-select="${r.id}" data-kind="${r.kind}">
-      <td style="font-weight:700;">${r.name}</td>
-      <td style="color:${r.color}; font-size:11px; font-weight:800;">${r.group}</td>
-      <td>${r.scope}</td>
-      <td class="mono">${r.out}</td>
-      <td class="mono">${r.grp} ${basisPill(r.basis)}</td>
-      <td class="mono">$${r.cpg.toLocaleString('es-UY')}</td>
-      <td class="num mono">${fmt(r.uyu)}</td>
-      <td class="num mono">${fmtUsd(r.usd)}</td>
-    </tr>`).join('');
-  document.getElementById('summaryTable').innerHTML = `
-    <thead><tr>
-      <th>Medio</th><th>Grupo</th><th>Alcance</th><th>Salidas</th><th>GRP</th><th>$/GRP</th><th>Costo UYU</th><th>Costo USD</th>
-    </tr></thead>
-    <tbody>${body}
-      <tr style="background:#F8F9FB;">
-        <td style="font-weight:800;" colspan="3">TOTAL PROPUESTA</td>
-        <td class="mono" style="font-weight:800;">${TOTAL_SPOTS}</td>
-        <td class="mono" style="font-weight:800;">—</td>
-        <td></td>
-        <td class="num mono" style="font-weight:800;">${fmt(TOTAL_UYU)}</td>
-        <td class="num mono" style="font-weight:800;">${fmtUsd(TOTAL_USD)}</td>
-      </tr>
-    </tbody>`;
-  document.querySelectorAll('#summaryTable tr.clickable').forEach(tr=>{
-    tr.addEventListener('click', ()=>{
-      const id = tr.dataset.select, kind = tr.dataset.kind;
-      selected = kind;
-      if(kind==='radio') stationId=id; else channelId=id;
-      renderMedioCards(); renderDetail();
-      document.getElementById('detailArea').scrollIntoView({behavior:'smooth', block:'center'});
-    });
-  });
+// ---------- Segmentación ----------
+function renderSeg(){
+  document.getElementById('segTable').innerHTML=`<thead><tr><th>Segmento</th><th>Edad</th><th>% ventas 2020-26</th><th>Mora</th><th>Al día sin usar</th><th>Rol</th></tr></thead><tbody>`+
+    CLIENT_SEGMENTS.map(s=>`<tr><td style="font-weight:700;"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${s.color};margin-right:7px;"></span>${s.label}</td><td class="mono">${s.edad}</td><td class="mono">${s.pctVentas}%</td><td class="mono">${s.mora}%</td><td class="mono">${s.alDia}%</td><td style="color:var(--muted);">${s.rol}</td></tr>`).join('')+`</tbody>`;
+  const segBar=(AD,B,C,E)=>{const segs=[[AD,'var(--seg-ad)'],[B,'var(--seg-b)'],[C,'var(--seg-c)'],[E,'var(--seg-e)']];return `<div class="bar-stack" style="height:22px;">`+segs.map(([v,c])=>v>0?`<div style="width:${v}%;background:${c};">${v>=8?v+'%':''}</div>`:'').join('')+`</div>`;};
+  let html=STATIONS.map(s=>`<div class="seg-row"><div class="seg-head"><span style="font-weight:700;">${s.name}</span><span style="color:var(--muted-2);">${s.grp} GRP</span></div>${segBar(s.composition.e60,s.composition.e5059,s.composition.e4049,s.composition.e1829+s.composition.e3039)}</div>`).join('');
+  html+=`<div class="seg-row" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);"><div class="seg-head"><span style="font-weight:800;color:var(--navy);">Total radio (ponderado por GRP)</span><span style="color:var(--muted-2);">${RADIO_BLEND.totalGrp} GRP</span></div>${segBar(RADIO_BLEND.AD,RADIO_BLEND.B,RADIO_BLEND.C,RADIO_BLEND.E)}</div>`;
+  document.getElementById('segBars').innerHTML=html;
 }
 
-// ---------- COMPARISON TABLE ----------
-function renderCompTable(){
-  const body = COMP.map(r=>`
-    <tr>
-      <td style="font-weight:700;">${r.em}</td>
-      <td class="mono">${r.tot}</td>
-      <td class="mono">${r.abc1}</td>
-      <td class="mono" style="font-weight:800;">${r.man}</td>
-      <td class="mono">${r.s5059}</td>
-      <td class="mono">${r.s60}</td>
-      <td style="color:var(--muted);">${r.rol}</td>
-      <td>${r.plan?'<span class="pill in-plan">En el plan</span>':'<span class="pill compl">Complementaria</span>'}</td>
-    </tr>`).join('');
-  document.getElementById('compTable').innerHTML = `
-    <thead><tr>
-      <th>Emisora</th><th>Total L-V</th><th>ABC1 L-V</th><th>ABC1 mañana 07–12h</th><th>50–59</th><th>≥60</th><th>Rol recomendado</th><th></th>
-    </tr></thead>
-    <tbody>${body}</tbody>`;
+// ---------- Backup + Summary ----------
+function renderBackup(){
+  document.getElementById('backupTable').innerHTML=`<thead><tr><th>Emisora</th><th>ABC1 (L-V)</th><th>Mañana ABC1</th><th>50-59</th><th>≥60</th><th>Rol potencial</th></tr></thead><tbody>`+
+    BACKUP.map(s=>`<tr><td style="font-weight:700;">${s.name}</td><td class="mono">${s.rating.abc1}</td><td class="mono">${s.rating.manana}</td><td class="mono">${s.rating.r5059}</td><td class="mono">${s.rating.r60}</td><td style="color:var(--muted);">${s.role}</td></tr>`).join('')+`</tbody>`;
+}
+function renderSummary(){
+  const rows=[...STATIONS.map(s=>({...s,prog:s.programs,tvstar:''})),...TV_CHANNELS.map(c=>({...c,prog:c.programs.map(p=>p.name).join(' + '),tvstar:'*'}))];
+  const body=rows.map(r=>`<tr class="clickable" data-select="${r.id}"><td style="font-weight:700;">${r.name}</td><td style="color:var(--muted);font-size:11.5px;">${r.prog}</td><td class="mono">${r.salidas}</td><td class="mono">${r.seconds}</td><td class="mono">${r.grp}${r.tvstar}</td><td class="num mono">${fmt(r.costUyu)}</td><td class="num mono">${fmtUsd(r.costUsd)}</td></tr>`).join('');
+  document.getElementById('summaryTable').innerHTML=`<thead><tr><th>Medio</th><th>Programa(s)</th><th>Salidas</th><th>Segundos</th><th>GRP est.</th><th>Costo UYU</th><th>Costo USD</th></tr></thead><tbody>${body}
+    <tr style="background:#F8F9FB;"><td style="font-weight:800;" colspan="2">TOTAL PROPUESTA</td><td class="mono" style="font-weight:800;">${TOTAL_SALIDAS}</td><td class="mono" style="font-weight:800;">${nf(TOTAL_SEC)}</td><td class="mono" style="font-weight:800;">${GRP_ALL}*</td><td class="num mono" style="font-weight:800;">${fmt(TOTAL_UYU)}</td><td class="num mono" style="font-weight:800;">${fmtUsd(TOTAL_USD)}</td></tr></tbody>`;
+  document.querySelectorAll('#summaryTable tr.clickable').forEach(tr=>tr.addEventListener('click',()=>{ selected=tr.dataset.select; renderCards(); renderDetail(); document.getElementById('detailArea').scrollIntoView({behavior:'smooth',block:'center'}); }));
 }
 
 // ---------- INIT ----------
-renderMedioCards();
-renderDetail();
-renderFlighting();
-renderSummaryTable();
-renderCompTable();
+renderCards(); renderDetail(); renderFlighting(); renderSeg(); renderBackup(); renderSummary();
+document.getElementById('legendMedio').querySelectorAll('.item').forEach(el=>el.addEventListener('click',()=>{ selected=el.dataset.sel; renderCards(); renderDetail(); document.getElementById('detailArea').scrollIntoView({behavior:'smooth',block:'center'}); }));
 </script>
 </body>
 </html>
